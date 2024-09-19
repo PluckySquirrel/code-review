@@ -5,9 +5,11 @@
     "outDir": "dist",                        
     "strict": true,                          
     "baseUrl": "./",                       
-    "esModuleInterop": true,                  
+    "esModuleInterop": true,   
+    "experimentalDecorators": true,               
     "skipLibCheck": true,                     
     "forceConsistentCasingInFileNames": true,  
+    "emitDecoratorMetadata": true,
     "paths": {
       "@src/*": [
         "src/*"
