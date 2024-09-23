@@ -16,7 +16,6 @@ import cookieParser from 'cookie-parser'; // Properly import cookie-parser
 import path from 'path'
 
 import indexRouter from './routes/index';   // Assuming your index router is in the routes/index.js or routes/index.ts
-import usersRouter from './routes/index';   // Assuming your users router is in the routes/users.js or routes/users.ts
 
 import { AppDataSource } from "./config/data-source"
 
@@ -34,7 +33,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 // Error handling example with http-errors
 app.use((req, res, next) => {

@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, ManyToMany, JoinTable, BeforeInsert, BeforeUpdate, JoinColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, ManyToMany, JoinTable, JoinColumn } from "typeorm";
 import { BookInstance } from "./bookinstance.entity";
 import { Author } from "./author.entity";
 import { Genre } from "./genre.entity";
