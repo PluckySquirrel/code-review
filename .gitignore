@@ -2,7 +2,4 @@
 dist/
 **/**/*.log
 env/*.env
-<<<<<<< HEAD
 src/migration/*.ts
-=======
->>>>>>> 158e2b0 (Part 2: Using database)
