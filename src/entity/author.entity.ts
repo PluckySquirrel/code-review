@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, BeforeInsert, BeforeUpdate, JoinTable } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { Book } from "./book.entity";
 import { MAX_LENGTH } from "../constants";
 
@@ -22,12 +22,14 @@ export class Author {
     @OneToMany(() => Book, (book) => book.author)
     books!: Book[]
 
-    get fullName(): string {
+    name!: string
+    get getFullName(): string {
         return `${this.firstName} ${this.familyName}`;
     }
 
+    url!: string
     get getUrl(): string {
-        return `Author/${this.id}`;
+        return this.url = `Author/${this.id}`;
     }
     
     constructor(authorData?: Partial<Author>) {

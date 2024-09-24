@@ -1,5 +1,5 @@
 import { MAX_LENGTH } from "../constants";
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Genre {
