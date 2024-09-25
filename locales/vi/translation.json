@@ -1,0 +1,22 @@
+{
+    "home": {
+      "home_button": "Thư viện địa phương",
+      "all-books": "Sách",
+      "all-authors": "Tác giả",
+      "all-genres": "Thể loại",
+      "all-bookinstances": "Bản sao sách",
+      "author-create": "Tạo mới tác giả",
+      "genre-create": "Tạo mới thể loại",
+      "book-create": "Tạo mới sách",
+      "bookinstance-create": "Tạo mới bản sao sách",
+      "sun-asterisk": "Sun Asterisk",
+      "welcome": "Chào mừng đến với thư viện",
+      "content": "Nội dung Thư viện",
+      "record_infor": "Thông tin ghi nhận",
+      "book": "Sách",
+      "bookinstance": "Bản sao",
+      "available_bookinstance": "Tất cả các bản sao có sẵn",
+      "author": "Tác giả",
+      "genre": "Thể loại"
+    }
+  }

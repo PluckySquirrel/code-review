@@ -1,0 +1,22 @@
+  {
+    "home": {
+      "home_button": "Home",
+      "all-books": "All books",
+      "all-authors": "All authors",
+      "all-genres": "All genres",
+      "all-bookinstances": "All book instances",
+      "author-create": "Create new author",
+      "genre-create": "Create new genre",
+      "book-create": "Create new book",
+      "bookinstance-create": "Create new book instance",
+      "sun-asterisk": "Sun Asterisk",
+      "welcome": "Welcome to Sun Asterisk",
+      "content": "Library Content",
+      "record_infor": "Records Information",
+      "book": "Books",
+      "bookinstance": "Book Instances",
+      "available_bookinstance": "Available Book Instances",
+      "author": "Authors",
+      "genre": "Genres"
+    }
+  }
