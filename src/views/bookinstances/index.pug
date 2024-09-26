@@ -1,0 +1,19 @@
+extends ../layout 
+
+block content 
+    h1= title
+    if  bookinstances.length
+        ul
+            each instance in bookinstances
+                li 
+                    a(href=instance.url) #{instance.book.title} : #{instance.imprint} -&nbsp;
+                    if instance.status === BookInstanceStatus.Available
+                        span.text-success #{instance.status}
+                    else if instance.status === BookInstanceStatus.Loaned
+                        span.text-danger #{instance.status}
+                        |  - Due: #{instance.due_back}
+                    else if instance.status === BookInstanceStatus.Maintenance
+                        span.text-warning #{instance.status}
+                        |  - Due: #{new Date(instance.due_back).toLocaleDateString()}
+    else 
+        p  #{t('bookinstances.not_exist')}

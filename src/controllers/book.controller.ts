@@ -1,15 +1,19 @@
 import { Request, Response } from 'express'
 import asyncHandler from 'express-async-handler'
-
 import i18next from '../i18n';
-import { getNumBooks } from '../services/book.service'
+import { getListBooks, getNumBooks } from '../services/book.service'
 import { getNumBookinstances } from '../services/bookinstance.service';
 import { getNumAuthors } from '../services/author.service'
 import { getNumGenres } from '../services/genre.service';
 
 // Display list of all Books.
 export const bookList = asyncHandler(async (req: Request, res: Response) => {
-    res.send('NOT IMPLEMENTED: Book list')
+    const books = await getListBooks();
+    res.render('books/index', { 
+        books, 
+        title: i18next.t('books.list_title'),
+        t: i18next.t.bind(i18next) 
+    })
 })
 
 // Display detail page for a specific Book.

@@ -7,3 +7,9 @@ export const getNumGenres = async () => {
     const numGenres = await Promise.all([genreRepository.count()]);
     return numGenres
 };
+
+export const getListGenres = async () => {
+    return await genreRepository.find({
+        order: { name: 'ASC' }
+    })
+}

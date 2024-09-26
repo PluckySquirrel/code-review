@@ -18,5 +18,21 @@
       "available_bookinstance": "Available Book Instances",
       "author": "Authors",
       "genre": "Genres"
+    },
+    "books": {
+      "list_title": "List of books",
+      "not_exist": "There are no books."
+    },
+    "authors": {
+      "list_title": "AuthorList",
+      "not_exist": "There are no authors. "
+    },
+    "bookinstances": {
+      "list_title": "List of book instances",
+      "not_exist": "There are no book instances."
+    },
+    "genres": {
+      "list_title": "List of genres",
+      "not_exist": "There are no genres."
     }
   }

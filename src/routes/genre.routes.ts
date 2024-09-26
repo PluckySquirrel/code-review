@@ -1,4 +1,3 @@
-
 import { Router } from 'express'
 import * as genreController from '../controllers/genre.controller'
 

@@ -1,9 +1,18 @@
+import { getListBookInstances } from '../services/bookinstance.service'
 import { Request, Response } from 'express'
+import i18next from '../i18n';
 import asyncHandler from 'express-async-handler'
+import { BookInstanceStatus } from '../constants';
 
 // Display list of all BookInstances.
 export const bookInstanceList = asyncHandler(async (req: Request, res: Response) => {
-    res.send('NOT IMPLEMENTED: BookInstance list')
+    const bookinstances = await getListBookInstances();
+    res.render('bookinstances/index', { 
+        bookinstances, 
+        title: i18next.t('bookinstances.list_title'),
+        t: i18next.t.bind(i18next),
+        BookInstanceStatus
+    })
 })
 
 // Display detail page for a specific BookInstance.
