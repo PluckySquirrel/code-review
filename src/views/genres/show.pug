@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    h1 Genre: #{genre.name}
+
+    p #[strong Books: ]
+
+    each book in books
+        hr
+        a(href=`/books/${book.id}`) #{book.title}   
+        p #{book.summary}

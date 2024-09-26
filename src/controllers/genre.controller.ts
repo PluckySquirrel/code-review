@@ -1,4 +1,4 @@
-import { getListGenres } from '../services/genre.service'
+import { getListGenres, getGenreById } from '../services/genre.service'
 import { Request, Response } from 'express'
 import i18next from '../i18n';
 import asyncHandler from 'express-async-handler'
@@ -15,7 +15,28 @@ export const genreList = asyncHandler(async (req: Request, res: Response) => {
 
 // Display detail page for a specific genre.
 export const genreDetail = asyncHandler(async (req: Request, res: Response) => {
-    res.send(`NOT IMPLEMENTED: genre detail: ${req.params.id}`)
+    const id = parseInt(req.params.id)
+    if (isNaN(id)){
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("genre_invalid_id")
+            }
+        })
+    }
+    const genre = await getGenreById(id);
+    if (genre === null) {
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("genre_notfound")
+            }
+        })
+    }
+    res.render('genres/show', {
+        genre,
+        books: genre?.books
+    })
 })
 
 // Handle genre create on POST.

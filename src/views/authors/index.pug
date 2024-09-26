@@ -6,7 +6,7 @@ block content
         ul
             each author in authors
                 li 
-                    a(href=author.url) #{author.firstName}, #{author.familyName}
+                    a(href=`/authors/${author.id}`) #{author.firstName}, #{author.familyName}
                     |   - (#{author.dateOfBirth}) 
                     |   - (#{author.dateOfDeath})
     else 

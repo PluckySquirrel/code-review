@@ -1,4 +1,4 @@
-import { getAuthorList } from '../services/author.service'
+import { getAuthorList, getAuthorById } from '../services/author.service'
 import { Request, Response } from 'express'
 import i18next from '../i18n';
 import asyncHandler from 'express-async-handler'
@@ -15,7 +15,28 @@ export const authorList = asyncHandler(async (req: Request, res: Response) => {
 
 // Display detail page for a specific Author.
 export const authorDetail = asyncHandler(async (req: Request, res: Response) => {
-    res.send(`NOT IMPLEMENTED: Author detail: ${req.params.id}`)
+    const id = parseInt(req.params.id)
+    if (isNaN(id)){
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("author_invalid_id")
+            }
+        })
+    }
+    const author = await getAuthorById(id);
+    if (author === null) {
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("author_notfound")
+            }
+        })
+    }
+    res.render('authors/show', {
+        author,
+        books: author?.books
+    })
 })
 
 // Handle Author create on GET.

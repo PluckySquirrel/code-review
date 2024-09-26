@@ -6,7 +6,7 @@ block content
         ul
             each instance in bookinstances
                 li 
-                    a(href=instance.url) #{instance.book.title} : #{instance.imprint} -&nbsp;
+                    a(href=`/bookinstances/${instance.id}`) #{instance.book.title} : #{instance.imprint} -&nbsp;
                     if instance.status === BookInstanceStatus.Available
                         span.text-success #{instance.status}
                     else if instance.status === BookInstanceStatus.Loaned

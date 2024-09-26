@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import asyncHandler from 'express-async-handler'
 import i18next from '../i18n';
-import { getListBooks, getNumBooks } from '../services/book.service'
+import { getListBooks, getNumBooks, getBookById } from '../services/book.service'
 import { getNumBookinstances } from '../services/bookinstance.service';
 import { getNumAuthors } from '../services/author.service'
 import { getNumGenres } from '../services/genre.service';
@@ -18,7 +18,30 @@ export const bookList = asyncHandler(async (req: Request, res: Response) => {
 
 // Display detail page for a specific Book.
 export const bookDetail = asyncHandler(async (req: Request, res: Response) => {
-    res.send(`NOT IMPLEMENTED: Book detail: ${req.params.id}`)
+    const id = parseInt(req.params.id)
+    if (isNaN(id)){
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("book_invalid_id")
+            }
+        })
+    }
+    const book = await getBookById(id);
+    if (book === null) {
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("book_notfound")
+            }
+        })
+    }
+    res.render('books/show', {
+        book,
+        bookInstances: book?.bookinstances,
+        bookGenres: book?.genres,
+        bookInstanceStatuses: book?.bookinstances,
+    })
 })
 
 // Handle Book create on GET.

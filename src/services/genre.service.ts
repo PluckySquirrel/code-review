@@ -9,7 +9,15 @@ export const getNumGenres = async () => {
 };
 
 export const getListGenres = async () => {
-    return await genreRepository.find({
+    const listGenres = await genreRepository.find({
         order: { name: 'ASC' }
+    })
+    return listGenres
+}
+
+export const getGenreById = async (id: number) => {
+    return await genreRepository.findOne({
+        relations: [ 'books' ],
+        where: { id: id }
     })
 }

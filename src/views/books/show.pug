@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+    h1 Title: #{book.title}
+
+    p #[strong Author: ]
+        a(href=book.author.url) #{book.author.getFullName}
+    p #[strong Summary: ] #{book.summary}
+    p #[strong ISBN: ] #{book.isbn}
+    p #[strong Genres: ]
+        each val, index in bookGenres
+            a(href=val.url) #{val.name}
+            if index < bookGenres.length - 1
+                |,
+            else
+                p #{t('genres.book_not_exist')}
+    div(class='book-copy-container')
+        h4 Copies 
+
+    each val in bookInstances
+        hr
+        if val.status=='Available'
+            p.text-success #{val.status}
+        else if val.status=='Maintenance'
+            p.text-danger #{val.status}
+        else 
+            p.text-warning #{val.status}
+        p #[strong Imprint:] #{val.imprint}
+        if val.status!='Available'
+            p #[strong Due back:] #{val.due_back}
+        p #[strong Id: ]
+            a(href=val.url) #{val.id}
+    
+    else 
+        p #{t('bookinstances.book_not_exist')}
