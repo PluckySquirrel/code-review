@@ -18,5 +18,17 @@
       "available_bookinstance": "Tất cả các bản sao có sẵn",
       "author": "Tác giả",
       "genre": "Thể loại"
+    },
+    "books": {
+      "list_title": "Các sách có trong thư viện"
+    },
+    "author": {
+      "list_title": "Các tác giả"
+    },
+    "bookinstances": {
+      "list_title": "Danh sách bản sao"
+    },
+    "genres": {
+      "list_title": "Danh sách thể loại"
     }
   }

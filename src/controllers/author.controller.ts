@@ -1,9 +1,16 @@
+import { getAuthorList } from '../services/author.service'
 import { Request, Response } from 'express'
+import i18next from '../i18n';
 import asyncHandler from 'express-async-handler'
 
 // Display list of all Authors.
 export const authorList = asyncHandler(async (req: Request, res: Response) => {
-    res.send('NOT IMPLEMENTED: Author list')
+    const authors = await getAuthorList();
+    res.render('authors/index', { 
+        authors, 
+        title: i18next.t('author.list_title'),
+        t: i18next.t.bind(i18next) 
+    })
 })
 
 // Display detail page for a specific Author.

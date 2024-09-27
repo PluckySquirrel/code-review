@@ -16,6 +16,10 @@ import cookieParser from 'cookie-parser'; // Properly import cookie-parser
 import path from 'path'
 
 import indexRouter from './routes/index';   // Assuming your index router is in the routes/index.js or routes/index.ts
+import authorRouter from './routes/author.routes';
+import bookRouter from './routes/book.routes';
+import bookInstanceRouter from './routes/bookinstance.routes';
+import genreRouter from './routes/genre.routes';
 
 import { AppDataSource } from "./config/data-source"
 import i18next from './i18n';
@@ -36,6 +40,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(i18nextMiddleware.handle(i18next));
 
 app.use("/", indexRouter);
+app.use('/authors', authorRouter);
+app.use('/books', bookRouter);
+app.use('/bookinstances', bookInstanceRouter);
+app.use('/genres', genreRouter);
 
 // Error handling example with http-errors
 app.use((req, res, next) => {

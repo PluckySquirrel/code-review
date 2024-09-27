@@ -11,7 +11,7 @@ export class Genre {
 
     url!: string;
     get getUrl(): string {
-        return `BookInstance/${this.id}`;
+        return this.url = `BookInstance/${this.id}`;
     }
 
     constructor(genreData?: Partial<Genre>){

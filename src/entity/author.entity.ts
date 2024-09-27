@@ -22,9 +22,8 @@ export class Author {
     @OneToMany(() => Book, (book) => book.author)
     books!: Book[]
 
-    name!: string
     get getFullName(): string {
-        return `${this.firstName} ${this.familyName}`;
+        return `${this.firstName}, ${this.familyName}`;
     }
 
     url!: string

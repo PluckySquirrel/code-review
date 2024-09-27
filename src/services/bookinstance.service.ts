@@ -1,3 +1,4 @@
+import { BookInstanceStatus } from "../constants";
 import { AppDataSource } from "../config/data-source";
 import { BookInstance } from "../entity/bookinstance.entity";
 
@@ -7,7 +8,7 @@ export const getNumBookinstances = async () => {
     const [numBookInstances, availableBookInstances] = await Promise.all([
         bookInstanceRepository.count(),
         bookInstanceRepository.findAndCount({
-            where: { status: 'Available'}
+            where: { status: BookInstanceStatus.Available}
         }),
     ]);
     return {
@@ -15,3 +16,10 @@ export const getNumBookinstances = async () => {
         availableBookInstances: availableBookInstances[1],
     };
 };
+
+export const getListBookInstances = async () => {
+    return await bookInstanceRepository.find({
+        order: { imprint: 'ASC' },
+        relations: ['book']
+    })
+}
