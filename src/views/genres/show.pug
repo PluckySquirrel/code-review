@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    h1 Genre: #{genre.name}
+    h1 #{t('genre.genre_label')}: #{genre.name}
 
     p #[strong Books: ]
 
@@ -9,3 +9,6 @@ block content
         hr
         a(href=`/books/${book.id}`) #{book.title}   
         p #{book.summary}
+
+    p
+        a(href=`${genre.getUrl}`+'/delete') #{t('genres.delete_button')}

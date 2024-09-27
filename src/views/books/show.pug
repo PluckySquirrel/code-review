@@ -13,8 +13,8 @@ block content
             if index < bookGenres.length - 1
                 |,
             else
-                p #{t('genres.book_not_exist')}
-    div(class='book-copy-container')
+                p No genres for this book
+    div(style='margin-left:20px;margin-top:20px')
         h4 Copies 
 
     each val in bookInstances
@@ -32,4 +32,9 @@ block content
             a(href=val.url) #{val.id}
     
     else 
-        p #{t('bookinstances.book_not_exist')}
+        p #{t('books.no_books_left')}
+    hr
+    p
+        a(href=`${book.getUrl}`+'/delete') Delete Book
+    p
+        a(href=`${book.getUrl}`+'/update') Update Book

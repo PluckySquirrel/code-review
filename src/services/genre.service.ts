@@ -1,5 +1,6 @@
 import { AppDataSource } from "../config/data-source";
 import { Genre } from "../entity/genre.entity";
+import { In } from "typeorm";
 
 const genreRepository = AppDataSource.getRepository(Genre);
 
@@ -16,8 +17,30 @@ export const getListGenres = async () => {
 }
 
 export const getGenreById = async (id: number) => {
-    return await genreRepository.findOne({
+    const genre = await genreRepository.findOne({
         relations: [ 'books' ],
         where: { id: id }
     })
+    return genre;
+}
+
+export const getGenresByIds = async (ids: string[]) => {
+    return await genreRepository.find({
+        where: { id: In(ids.map((item) => parseInt(item))) }
+    });
+};
+
+export const getGenreByName = async (name: string) => {
+    return await genreRepository.findOne({
+        where: { name: name }
+    })
+}
+
+export const saveGenre = async (genre: Genre) => {
+    await genreRepository.save(genre)
+    return
+}
+
+export const deleteGenre = async (id: number) => {
+    await genreRepository.delete(id)
 }

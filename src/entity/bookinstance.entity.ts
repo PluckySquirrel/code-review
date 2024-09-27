@@ -22,7 +22,7 @@ export class BookInstance {
 
     url!: string
     get getUrl(): string {
-        return this.url = `bookinstances/${this.id}`;
+        return this.url = `${this.id}`;
     }
 
     constructor(bookInstanceData?: Partial<BookInstance>) {

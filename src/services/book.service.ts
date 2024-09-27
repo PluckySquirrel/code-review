@@ -4,8 +4,7 @@ import { Book } from "../entity/book.entity";
 const bookRepository = AppDataSource.getRepository(Book);
 
 export const getNumBooks = async () => {
-    const numBooks = await Promise.all([bookRepository.count()]);
-    return numBooks
+    return await Promise.all([bookRepository.count()]);
 };
 
 export const getListBooks = async () => {
@@ -20,4 +19,19 @@ export const getBookById = async (id: number) => {
         relations: ['author', 'genres', 'bookinstances'],
         where: { id: id }
     })
+}
+
+export const getBookByName = async (name: string) => {
+    return await bookRepository.findOne({
+        relations: ['author', 'genres', 'bookinstances'],
+        where: { title: name }
+    })
+}
+
+export const saveBook = async (book: Book) => {
+    return await bookRepository.save(book)
+}
+
+export const deleteBook = async (id: number) => {
+    return await bookRepository.delete(id)
 }

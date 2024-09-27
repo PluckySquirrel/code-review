@@ -6,11 +6,11 @@ const router: Router = Router()
 // GET request for displaying all book instances
 router.get('', bookInstanceController.bookInstanceList)
 
-// GET request for displaying a specific page of a book instance
-router.get('/:id', bookInstanceController.bookInstanceDetail)
-
 // GET request for creating Book instance. NOTE This must come before route for id (i.e. display Book instance).
 router.get('/create', bookInstanceController.bookInstanceCreateGet)
+
+// GET request for displaying a specific page of a book instance
+router.get('/:id', bookInstanceController.bookInstanceDetail)
 
 // POST request for creating Book instance.
 router.post('/create', bookInstanceController.bookInstanceCreatePost)

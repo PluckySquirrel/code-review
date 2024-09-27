@@ -23,26 +23,40 @@
       "list_title": "List of books",
       "not_exist": "There are no books.",
       "book_invalid_id": "Error: Invalid book Id",
-      "book_notfound": "Error: Book not found"
+      "book_notfound": "Error: Book not found",
+      "delete_warning": "Delete the following book instances before attempting to delete this book.",
+      "delete_confirm": "Do you really want to delete this book?",
+      "no_books_left": "There are no copies of this book in the library."
     },
     "authors": {
       "list_title": "AuthorList",
       "not_exist": "There are no authors. ",
       "author_invalid_id": "Error: Invalid author Id",
-      "author_notfound": "Error: Author not found"
+      "author_notfound": "Error: Author not found",
+      "delete_button": "Delete author",
+      "delete_confirm": "Do you want to delete this author",
+      "delete_warning": "Delete the following books before attempting to delete this author",
+      "label": "Author"
     },
     "bookinstances": {
       "list_title": "List of book instances",
       "not_exist": "There are currently no book instances.",
       "book_not_exist": "There are currently no instances for this book.",
       "bookinstance": "Error: Invalid book instance Id",
-      "bookinstance_notfound": "Error: Book instance not found"
+      "bookinstance_notfound": "Error: Book instance not found",
+      "delete_confirm": "Do you want to delete this book instance?",
+      "delete_button": "Delete"
     },
     "genres": {
       "list_title": "List of genres",
       "not_exist": "There are no genres.",
       "book_not_exist": "There are no genres for this book.",
       "genre_invalid_id": "Error: Invalid genre Id",
-      "genre_notfound": "Error: Genre not found"
+      "genre_notfound": "Error: Genre not found",
+      "delete_confirm": "Do you want to delete this genre",
+      "delete_button": "Delete genre",
+      "create_placeholder": "Fantasy, Poetry etc.",
+      "submit_button": "Submit",
+      "genre_label": "Genre"    
     }
   }

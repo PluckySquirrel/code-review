@@ -1,0 +1,32 @@
+extends ../layout
+block content
+    h1 #{title}
+
+    form(method='POST' action='create')
+        iv.form-group
+            label(for='book') Book:
+            select#book.form-control(name='book', required)
+                option(value='') -- Select a Book -- 
+                each book in books
+                    option(value=book.id) #{book.title}
+
+        iv.form-group
+            label(for='imprint') Imprint:
+            input#imprint.form-control(type='text', name='imprint', placeholder='Imprint details' required)
+        
+        iv.form-group
+            label(for='date_available') Date when book available:
+            input#date_available.form-control(type='date', name='date_available', value=today)
+
+        iv.form-group
+            label(for='status') Status:
+            select#status.form-control(name='status', required)
+                option(value='') -- Select a Status --
+                each status in statuses
+                    option(value=status) #{status}
+
+        button.btn.btn-primary(type='submit') 
+    if errors
+        ul
+            for error in errors
+                li!= error.msg

@@ -7,3 +7,7 @@ block content
     p #[strong Imprint: ] #{bookInstance.imprint}
     p #[strong Status: ] #{bookInstance.status}
     p #[strong Due back: ] #{new Date(bookInstance.due_back).toLocaleDateString()}
+    
+    hr
+    p
+        a(href=`${bookInstance.getUrl}`+'/delete') Delete book instance

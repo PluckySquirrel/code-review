@@ -28,7 +28,7 @@ export class Author {
 
     url!: string
     get getUrl(): string {
-        return this.url = `Author/${this.id}`;
+        return this.url = `${this.id}`;
     }
     
     constructor(authorData?: Partial<Author>) {

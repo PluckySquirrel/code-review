@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    h1 Author #{author.getFullName}
+    h1 #{t('author.label')} #{author.getFullName}
 
     p #{new Date(author.dateOfBirth).toLocaleDateString()}
     p #[strong Books: ]
@@ -10,3 +10,7 @@ block content
         hr
         a(href=`/books/${book.id}`) #{book.title}   
         p #{book.summary}
+
+    hr
+    p
+        a(href=`${author.getUrl}`+'/delete') #{t('author.delete_button')}

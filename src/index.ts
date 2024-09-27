@@ -25,6 +25,9 @@ import { AppDataSource } from "./config/data-source"
 import i18next from './i18n';
 import i18nextMiddleware from 'i18next-http-middleware'; 
 
+// test
+// import { matchedData, query, validationResult } from 'express-validator'
+
 // **** Run **** //
 
 const app = express();
@@ -46,6 +49,17 @@ app.use('/bookinstances', bookInstanceRouter);
 app.use('/genres', genreRouter);
 
 
+
+// test
+// app.use(express.json());
+// app.get('/hello', query('person').notEmpty().escape(), (req, res) => {
+//   const result = validationResult(req);
+//   if (result.isEmpty()) {
+//     const data = matchedData(req);
+//     return res.send(`Hello, ${data.person}!`);
+//   }
+//   res.send({ errors: result.array() });
+// })
 
 // Error handling example with http-errors
 app.use((req, res, next) => {

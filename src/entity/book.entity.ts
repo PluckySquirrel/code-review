@@ -31,7 +31,7 @@ export class Book {
 
     url!: string
     get getUrl(): string {
-        return this.url = `books/${this.id}`;
+        return this.url = `${this.id}`;
     }
 
     constructor(bookData?: Partial<Book>){
