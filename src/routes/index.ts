@@ -1,29 +1,18 @@
-import { Router, Request, Response } from 'express'
-
-import Paths from '../common/Paths';
-
+import { Router } from 'express'
+import { index } from '../controllers/book.controller'
+import i18next from 'i18next';
+import i18nextMiddleware from "i18next-http-middleware"
+import setLocaleMiddleware from '../middlewares/setLocaleMiddleware';
 
 // **** Variables **** //
-
-const apiRouter = Router();
-
-
-// ** Add UserRouter ** //
-
-// Init router
-const userRouter = Router();
-
-// Get all users
-
-// Add UserRouter
-apiRouter.use(Paths.Users.Base, userRouter);
+const router = Router();
 
 /* GET home page. */
-apiRouter.get('/', (req: Request, res: Response) => {
-    res.render('index', { title: 'Express' });
-    });
+router.use(i18nextMiddleware.handle(i18next))
 
+router.use(setLocaleMiddleware);
+
+router.get('/', index);
 
 // **** Export default **** //
-
-export default apiRouter;
+export default router;

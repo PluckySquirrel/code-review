@@ -3,7 +3,8 @@
     "target": "es6",                          
     "module": "commonjs",                     
     "outDir": "dist",                        
-    "strict": true,                          
+    "strict": true,    
+    "resolveJsonModule": true,                      
     "baseUrl": "./",                       
     "esModuleInterop": true,   
     "experimentalDecorators": true,               
@@ -20,7 +21,8 @@
   "include": [
     "src/**/*.ts",
     "spec/**/*.ts",
-    "build.ts"
+    "build.ts",
+    "src/express-session.d.ts",
   ],
   "exclude": [
     "src/public/"
