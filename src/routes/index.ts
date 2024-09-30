@@ -14,5 +14,6 @@ router.use(setLocaleMiddleware);
 
 router.get('/', index);
 
+
 // **** Export default **** //
 export default router;

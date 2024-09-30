@@ -21,18 +21,28 @@
     },
     "books": {
       "list_title": "List of books",
-      "not_exist": "There are no books."
+      "not_exist": "There are no books.",
+      "book_invalid_id": "Error: Invalid book Id",
+      "book_notfound": "Error: Book not found"
     },
     "authors": {
       "list_title": "AuthorList",
-      "not_exist": "There are no authors. "
+      "not_exist": "There are no authors. ",
+      "author_invalid_id": "Error: Invalid author Id",
+      "author_notfound": "Error: Author not found"
     },
     "bookinstances": {
       "list_title": "List of book instances",
-      "not_exist": "There are no book instances."
+      "not_exist": "There are currently no book instances.",
+      "book_not_exist": "There are currently no instances for this book.",
+      "bookinstance": "Error: Invalid book instance Id",
+      "bookinstance_notfound": "Error: Book instance not found"
     },
     "genres": {
       "list_title": "List of genres",
-      "not_exist": "There are no genres."
+      "not_exist": "There are no genres.",
+      "book_not_exist": "There are no genres for this book.",
+      "genre_invalid_id": "Error: Invalid genre Id",
+      "genre_notfound": "Error: Genre not found"
     }
   }

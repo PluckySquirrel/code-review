@@ -1,0 +1,9 @@
+extends ../layout 
+
+block content 
+    h1 ID: #{bookInstance.id}
+    p #[strong Title: ] 
+        a(href=`/books/${book.id}`) #{book.title}
+    p #[strong Imprint: ] #{bookInstance.imprint}
+    p #[strong Status: ] #{bookInstance.status}
+    p #[strong Due back: ] #{new Date(bookInstance.due_back).toLocaleDateString()}

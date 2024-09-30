@@ -25,7 +25,7 @@ export class Book {
     @JoinColumn({ name: 'author_id' })
     author!: Author | undefined
 
-    @ManyToMany(() => Genre)
+    @ManyToMany(() => Genre, (genre) => genre.books)
     @JoinTable()
     genres: Genre[] | undefined
 

@@ -23,3 +23,10 @@ export const getListBookInstances = async () => {
         relations: ['book']
     })
 }
+
+export const getBookInstanceById = async (id: number) => {
+    return await bookInstanceRepository.findOne({
+        relations: [ 'book' ],
+        where: { id: id }
+    })
+}

@@ -1,4 +1,4 @@
-import { getListBookInstances } from '../services/bookinstance.service'
+import { getListBookInstances, getBookInstanceById } from '../services/bookinstance.service'
 import { Request, Response } from 'express'
 import i18next from '../i18n';
 import asyncHandler from 'express-async-handler'
@@ -17,7 +17,28 @@ export const bookInstanceList = asyncHandler(async (req: Request, res: Response)
 
 // Display detail page for a specific BookInstance.
 export const bookInstanceDetail = asyncHandler(async (req: Request, res: Response) => {
-    res.send(`NOT IMPLEMENTED: BookInstance detail: ${req.params.id}`)
+    const id = parseInt(req.params.id)
+    if (isNaN(id)){
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("bookinstance_invalid_id")
+            }
+        })
+    }
+    const bookInstance = await getBookInstanceById(id);
+    if (bookInstance === null) {
+        return res.render("./error", {
+            error: {
+                status: 404,
+                message: i18next.t("bookinstance_notfound")
+            }
+        })
+    }
+    res.render('bookinstances/show', {
+        bookInstance,
+        book: bookInstance?.book
+    })
 })
 
 // Handle BookInstance create on GET.

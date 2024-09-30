@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    h1 Author #{author.getFullName}
+
+    p #{new Date(author.dateOfBirth).toLocaleDateString()}
+    p #[strong Books: ]
+
+    each book in books
+        hr
+        a(href=`/books/${book.id}`) #{book.title}   
+        p #{book.summary}

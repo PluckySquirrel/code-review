@@ -20,15 +20,29 @@
       "genre": "Thể loại"
     },
     "books": {
-      "list_title": "Các sách có trong thư viện"
+      "list_title": "Các sách có trong thư viện",
+      "not_exist": "Không có sách trong thư viện",
+      "book_invalid_id": "Lỗi: ID không hợp lệ",
+      "book_notfound": "Lỗi: Không tìm thấy sách"
     },
     "author": {
-      "list_title": "Các tác giả"
+      "list_title": "Các tác giả",
+      "not_exist": "Không có tác giả nào",
+      "author_invalid_id": "Lỗi: ID không hợp lệ",
+      "author_notfound": "Lỗi: Không tìm thấy tác giả"
     },
     "bookinstances": {
-      "list_title": "Danh sách bản sao"
+      "list_title": "Danh sách bản sao",
+      "not_exist": "Không có bản sao nào",
+      "book_not_exist": "Không có bản sao nào cho cuốn sách này.",
+      "bookinstance": "Error: ID không hợp lệ",
+      "bookinstance_notfound": "Error: Không tìm thấy bản sao"
     },
     "genres": {
-      "list_title": "Danh sách thể loại"
+      "list_title": "Danh sách thể loại",
+      "not_exist": "Không có thể loại nào",
+      "book_not_exist": "Không có thể loại nào cho cuốn sách này.",
+      "genre_invalid_id": "Lỗi: ID không hợp lệ",
+      "genre_notfound": "Lỗi: Không tìm thấy thể loại"
     }
   }
