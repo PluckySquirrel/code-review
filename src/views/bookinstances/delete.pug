@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+
+    h1 #{bookInstance.name}
+    p= bookInstance.lifespan
+
+        p #{t('bookinstances.delete_confirm')}
+
+        form(method='POST')
+            div.form-group
+                input#bookinstanceid.form-control(type='hidden', name='bookInstance', value=bookInstance._id )
+            
+            button.btn.btn-primary(type='submit') #{t('bookinstances.delete_button')}

@@ -1,8 +1,12 @@
-import { getListBookInstances, getBookInstanceById } from '../services/bookinstance.service'
+import { getListBookInstances, getBookInstanceById, saveBookInstance, deleteBookInstance } from '../services/bookinstance.service'
 import { Request, Response } from 'express'
 import i18next from '../i18n';
 import asyncHandler from 'express-async-handler'
+import { body, validationResult } from 'express-validator'
 import { BookInstanceStatus } from '../constants';
+import { BookInstance } from '../entity/bookinstance.entity';
+import { getListBooks } from '../services/book.service';
+import { validateBookInstances } from '../util/validationFields';
 
 // Display list of all BookInstances.
 export const bookInstanceList = asyncHandler(async (req: Request, res: Response) => {
@@ -43,22 +47,68 @@ export const bookInstanceDetail = asyncHandler(async (req: Request, res: Respons
 
 // Handle BookInstance create on GET.
 export const bookInstanceCreateGet = asyncHandler(async (req: Request, res: Response) => {
-    res.send('NOT IMPLEMENTED: BookInstance create GET');
+    const books = await getListBooks()
+    const statuses = BookInstanceStatus
+    res.render('bookinstances/form', { title: 'Create new book instance', books, statuses})
 })
 
 // Handle BookInstance create on POST.
-export const bookInstanceCreatePost = asyncHandler(async (req: Request, res: Response) => {
-    res.send('NOT IMPLEMENTED: BookInstance create POST');
-});
+export const bookInstanceCreatePost = [
+    ...validateBookInstances,
+    asyncHandler(async (req: Request, res: Response) => {    
+        const errors = validationResult(req)
+
+        const { book, imprint, date_available, status } = req.body
+
+        const bookInstance = new BookInstance()
+        bookInstance.imprint = imprint
+        bookInstance.due_back = date_available
+        bookInstance.status = status
+        bookInstance.book = book
+        
+        if (!errors.isEmpty()) {
+            const allBooks = getListBooks()
+            const statuses = BookInstanceStatus
+            res.render('bookinstances/form', {
+                title: 'Create new book instance',
+                bookInstance: bookInstance,
+                book: allBooks,
+                status: statuses,
+                errors: errors.array()
+            })
+            return 
+        } else { 
+            await saveBookInstance(bookInstance)
+            res.redirect(bookInstance.getUrl)
+        }
+    })
+]
 
 // Handle BookInstance delete on GET.
 export const bookInstanceDeleteGet = asyncHandler(async (req: Request, res: Response) => {
-    res.send(`NOT IMPLEMENTED: BookInstance delete GET: ${req.params.id}`);
+    const id = parseInt(req.params.id)
+    if (isNaN(id)) {
+        // log 404
+    }
+    const bookInstance = await getBookInstanceById(id)
+    if (bookInstance === null) {
+        res.redirect('/bookinstances') // no results
+    }
+    res.render('bookinstances/delete', { title: 'Delete Book Instance', bookInstance: bookInstance })
 });
 
 // Handle BookInstance delete on POST.
 export const bookInstanceDeletePost = asyncHandler(async (req: Request, res: Response) => {
-    res.send(`NOT IMPLEMENTED: BookInstance delete POST: ${req.params.id}`);
+    const id = parseInt(req.params.id)
+    if (isNaN(id)) {
+        // log 404
+    }
+    const bookinstance = await getBookInstanceById(id)
+    if (bookinstance === null) {
+        res.redirect('/bookinstances') // no results
+    }
+    await deleteBookInstance(id)
+    res.redirect('/bookinstances')
 });
 
 // Handle BookInstance update on POST.

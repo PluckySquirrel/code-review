@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+
+    h1 #{genre.name}
+    p= genre.lifespan
+
+        p #{t('genres.delete_confirm')}
+
+        form(method='POST')
+            div.form-group
+                input#genreid.form-control(type='hidden', name='genreid', value=genre._id )
+            
+            button.btn.btn-primary(type='submit') #{t('genres.delete_button')}

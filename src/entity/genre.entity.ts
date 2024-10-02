@@ -15,7 +15,7 @@ export class Genre {
 
     url!: string;
     get getUrl(): string {
-        return this.url = `Genre/${this.id}`;
+        return this.url = `${this.id}`;
     }
 
     constructor(genreData?: Partial<Genre>){

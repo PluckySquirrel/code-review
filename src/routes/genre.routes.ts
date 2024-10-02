@@ -6,11 +6,11 @@ const router: Router = Router()
 // GET request for displaying all genre
 router.get('', genreController.genreList)
 
-// GET request for displaying a specific page of a genre
-router.get('/:id', genreController.genreDetail)
-
 // GET request for creating genre. NOTE This must come before route for id (i.e. display genre).
 router.get('/create', genreController.genreCreateGet)
+
+// GET request for displaying a specific page of a genre
+router.get('/:id', genreController.genreDetail)
 
 // POST request for creating genre.
 router.post('/create', genreController.genreCreatePost)

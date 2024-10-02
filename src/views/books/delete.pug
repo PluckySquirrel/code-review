@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+
+    h1 #{title}: #{book.title}
+    p= book.lifespan
+
+    if bookInstances.length
+
+        p #[strong #{t('books.delete_warning')}.]
+        div(style='margin-left:20px;margin-top:20px')
+            h4 Book Instances
+
+        dl
+            each instance in bookInstances
+                dt
+                    a(href=`${book.getUrl}`) #{book.title}
+                dd #{book.summary}
+    else
+        p #{t('books.delete_confirm)}
+
+        form(method='POST')
+            div.form-group
+                input#authorid.form-control(type='hidden', name='bookid', value=book._id )
+            
+            button.btn.btn-primary(type='submit') Delete

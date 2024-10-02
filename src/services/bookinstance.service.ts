@@ -30,3 +30,22 @@ export const getBookInstanceById = async (id: number) => {
         where: { id: id }
     })
 }
+
+export const getBookInstanceByName = async (name: string) => {
+    return await bookInstanceRepository.findOne({
+        relations: [ 'book' ],
+        where: {
+            book: {
+                title: name
+            }
+        }
+    })
+}
+
+export const saveBookInstance = async (bookInstance: BookInstance) => {
+    return await bookInstanceRepository.save(bookInstance)
+}
+
+export const deleteBookInstance = async (id: number) => {
+    return await bookInstanceRepository.delete(id)
+}
